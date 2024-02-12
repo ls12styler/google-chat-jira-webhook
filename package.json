@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "axios": "^1.5.1"
+  },
+  "devDependencies": {
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.2.2"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build:watch": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"npx @google-cloud/functions-framework --target=JIRAWebhook --port=8081\"",
+    "build": "tsc",
+    "start": "functions-framework --target=JIRAWebhook",
+    "prestart": "npm run build",
+    "gcp-build": "npm run build",
+    "gcp-deploy": "npm run build && gcloud functions deploy JIRAWebhook --runtime nodejs16 --trigger-http --allow-unauthenticated --region=europe-west2 --gen2"
+  }
+}

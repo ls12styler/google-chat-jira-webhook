@@ -1,0 +1,11 @@
+{
+  "name": "GCP Arch Webhook",
+  "url": "https://europe-west2-bq-ml-football.cloudfunctions.net/JIRAWebhook",
+  "events": [
+    "jira:issue_created"
+  ],
+  "filters": {
+    "issue-related-events-section": "project = \"APSD\" and status = Backlog"
+  },
+  "excludeBody" : false
+}
